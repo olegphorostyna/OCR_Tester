@@ -1,190 +1,10 @@
-4
+Dae
 
-Close Welcome screen when opening a new project
-
-7m Edit Layout
-
-
-Trial - TMS FNC UI Pack
-
-
-Trial - TMS WEB Core
-Framework for creating modern web applications
-
-Promoted in Getlt
-
-New in Getlt
-
-
-
-Celebrating Delphi's 29th. Full replay of our special anniv.
-Celebrating Delphi's 29th. Replay of our special anniversary
-webinar! Watch the full replay hosted by Developer Advocate
-lan Barker with special guests MVP Dr Holger Flick. MVP.
-
-
-
-loaded
-
-In web applications.
-
-Project2.dproj
-™ AUsers\Tester\Documents\Embarcadero\Studio\,
-
-Promoted in Getlt
-
-= JEDI Visual Component Library
-JVCLis a library of over 600 Delphi visual and non-visual
-Delphi/C+ +Builder components
-
-ys Navigator
-
-Celebrating Delphi's 29th. Full replay of our special anniv.
-Celebrating Delphi's 29th. Replay of our special anniversary
-webinar! Watch the full replay hosted by Developer Advocate
-lan Barker with special guests MVP Dr Holger Flick, MVP.
-
-How to create a real app that runs in The Cloud | lan Bar.
-
-Do you want to know how to create apps and micro-services
-nich run fully in the cloud? Follow along as Developer
-
-Advocate lan Barker shows us some of the great features.
-
-How to create a real Linux app step by step guide | Wint.
-Linux is free and its wildly popular. Follow along as we create
-
-
-Dynamic Library - Delphi
-|A library that can be loaded and urjloaded
-
-
-
-(2 Windows10CRMDemo.dproj
-(J C\Users\Public\Documents\Embarcadero\
-
-Console Application - Delphi
-A command-line app
-
-All you need to know about the RAD Studio IDE | lan Bar.
-The RAD Studio IDE is your one-stop super-powered tool of
-choice for creating modern, fast. powerful cross-platform apps
-that work on Windows, macOS, Android, iOS, and.
-
-
-
-Project3.cbproj
-Ci\test\make\
-
-
-Package - Delphi
-|A smart dynamically loaded library, carrying extra metadata
-
-All the free RAD Studio components and what they do | I.
-RAD Studio is PACKED with a whole host of useful controls and
-components. They include everything you could want from Ul
-gadgets and widgets to non-visual controls to.
-
-
-
-Project3.dproj
-@ C\test\bmpTest\
-
-
-Multi-Device Application - Delphi
-[A UI app that works on any OS or device, using the FireMonkey.
-
-
-The best of third-party components and libraries | lan Ba.
-The strength of RAD Studio is really bought out by the huge
-ecosystem of third-party libraries and controls. You can find
-something for every possible task or problem you need to.
-
-
-(2 StyledElementsTest.dproj
-iq C:\Users\Tester\Downloads\StyledElementsTest\
-
-Windows VCL Application - Delphi
-A Ul app using Windows native controls, using the.
-
-
-
-
-Learn
-
-Open Recent
-
-Create Delphi or C++
-
-
-
-
-
-4, Getlt Package Manager
-
-| Extend the IDE
-
-Welcome to RAD Studio
-
-Manage Features
-
-he Patch available
+INo Tabs
 
 Structure Object Inspector
 
-Welcome to RAD Studio] ate Petch available
-
-Create Delphi or C++ 7 ®
-
-Open Recent
-
-R Extend the IDE Gi Manage Features
-
-‘fh Getit Package Manager
-
-Learn
-
-Windows VCL Application - Delphi
-A Ul app using Windows native controls, using the.
-
-StyledElementsTest.dproj
-C:\Users\Tester\Downloads\StyledElementsTest\
-
-Multi-Device Application - Delphi
-A Ul app that works on any OS or device, using the FireMonkey.
-
-Catest\bmpTest\
-
-(G) Project3.dproj
-
-Package - Delphi
-JA smart dynamically loaded library, carrying extra metadata
-
-‘Console Application - Delphi
-|A command-line app
-
-Project3.cbproj
-CAtest\make\
-
-Windows10CRMDemo.dproj
-C:\Users\Public\Documents\Embarcadero\,
-
-The best of third-party components and libraries | lan Ba.
-The strength of RAD Studio is really bought out by the huge
-ecosystem of third-party libraries and controls. You can find
-something for every possible task or problem you need to.
-
-All the free RAD Studio components and what they do | |
-RAD Studio is PACKED with a whole host of useful controls and
-components. They include everything you could want from Ul
-gadgets and widgets to non-visual controls to.
-
-All you need to know about the RAD Studio IDE | lan Bar.
-The RAD Studio IDE is your one-stop super-powered tool of
-choice for creating modern, fast. powerful cross-platform apps
-that work on Windows, macOS, Android, iOS, and.
-
-Palette Projects, Model View, Data Explorer, Multi-Device Preview
+MaINAld BD1N9C-HIN |W W40|dxg eyeq 'Mal/\ |@PO IN ’s}2a [01g aNa/ed
 
 
 
@@ -197,82 +17,32 @@ Palette Projects, Model View, Data Explorer, Multi-Device Preview
 
 
 
-Ee
+
+
+Re
+
+[o
 
 
 
+Bit
 
-BSta
-
-‘Help:
+Help
 
 
+Tools
 
 Component
 
+Run
 
 Project
 
 Refactor
 
+View
 
+Search
 
-
-
-40 [Administrator] RAD Studio 12 |
-
-File | {Edit | [Search | {View | [Refactor | {Project | [Run ] [Component | [Tools | {Tabs | {Help
-
-GB} (2S /@) [Sia - |B
-v
-
-Welcome to RAD Studio) | af Patch available R Extend the IDE Gi Manage Features R Getlt Package Manager
-
-at
-a
-al
-
-yo}adsuy 32afG0 aimanas
-
-z
-$
-F
-S
-= = c
-=|
-i io)
-Create Delphi or C++ 7| Open Recent laa! [a Learn 3 Rows
-Windows VCL Application - Delphi = StyledElementsTest.dproj = The best of third-party components and libraries | lan Ba... | | 2
-Es Ul app using Windows native controls, using the. C,\Users\Tester\Downloads\StyledElementsTest\ The strength of RAD Studio is really bought out by the huge =| Mie
-ecosystem of third-party libraries and controls. You can find Z
-something for every possible task or problem you need to. S
-FE | Mutti-Device Appiication - Delphi Project3.dproj 3
-fell 8
-|A UI that works y OS or di . the FireMonke C:\test\bmpTest'
-a ee Ae All the free RAD Studio components and what they do |. =
-RAD Studio is PACKED with a whole host of useful controls and 3
-Package - Delphi Project3.cbproj components. They include everything you could want from Ul >
-|A smart dynamically loaded library, carrying extra metadata CAtest\make\ gadgets and widgets to non-visual controls to. =
-All d to know about the RAD Studio IDE | lan B s
-‘Console Application - Delphi Windows10CRMDemo.dproj pdcteasarr ioeecschd laste eTOIEIS | E00 Bat é
-The RAD Studio IDE is your one-stop super-powered tool o'
-|A command-line app C,\Users\Public\Documents\Embarcadero\, y es rs
-choice for creating modern, fast, powerful cross-platform apps
-that work on Windows, macOS, Android, iOS, and.
-D Span Speen Projectaproy
-A library that can be loaded and ut C\Users\Tester\Documents\Embarcadero\Studio\. Celebrating Delphi's 29th. Full replay of our special anniv.
-Celebrating Delphi's 29th. Replay of our special anniversary
-webinar! Watch the full replay hosted by Developer Advocate
-lan Barker with special guests MVP Dr Holger Flick, MVP.
-New in Getlt Promoted in Getlt
-How to create a real app that runs in The Cloud | lan Bar.
-tms,. _ | Trial - TMS WEB Core JEDI Visual Component Library Do you want to know how to create apps and micro-services
-[us wes || Ffamework for creating modetn web applications. JVCLis a library of over 600 Delphi visual and non-visual which run fully in the cloud? Follow along as Developer mF
-ws) Core, Delphi/C+ +Builder components. ‘Advocate lan Barker shows us some of the great features. F
-—_ How to create a real Linux app step by step guide | Wint.
-Trial - TMS FNC UI Pack pom Navigator Linux is free and it is wildly popular. Follow along as we create 12:21 PM
-4/29/2024
-
-ES Edit Layout [| Close Welcome screen when opening a new project ()
 
 
