@@ -1,10 +1,8 @@
-Dae
 
-INo Tabs
 
-Structure Object Inspector
 
-MaINAld BD1N9C-HIN |W W40|dxg eyeq 'Mal/\ |@PO IN ’s}2a [01g aNa/ed
+
+All shown
 
 
 
@@ -15,17 +13,139 @@ MaINAld BD1N9C-HIN |W W40|dxg eyeq 'Mal/\ |@PO IN ’s}2a [01g aNa/ed
 
 
 
+Delphi
+
+Modified
+
+Insert
 
 
 
 
-Re
-
-[o
 
 
 
-Bit
+
+
+Design
+
+
+| History
+
+
+
+
+
+(TTitleBar)
+
+CustomHint
+
+Cursor
+
+cti3D
+
+> Constraints
+
+> Other
+
+Color
+
+
+Form1
+
+Caption
+ClientHeight
+ClientWidth
+
+
+BorderStyle
+BorderWidth
+
+BiDiMode
+
+AutoSize
+
+AutoScroll
+
+
+2
+
+
+
+
+Palette
+
+ActiveControl
+
+
+Model View
+
+Events
+
+Properties
+Action
+
+
+
+
+
+
+
+
+
+
+
+TObject) ;
+
+*.dfm}
+
+
+TForm1;
+
+var
+Form1.
+
+
+TObject) ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+va
+
+
+
+
+
+Structure
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+BSht
 
 Help
 

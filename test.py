@@ -1,3 +1,10 @@
+# How to run this script:
+# install python3
+# pip install opencv-python
+# download binary from https://github.com/UB-Mannheim/tesseract/wiki. then add pytesseract.pytesseract.tesseract_cmd = 'C:\Program Files (x86)\Tesseract-OCR\tesseract.exe' to your script.
+# pip install pytesseract
+# pip install pywin32
+# python3 test.py
 # Import required packages
 import cv2
 import pytesseract
@@ -24,7 +31,7 @@ def takeSnapshot():
 time.sleep(4)
 takeSnapshot() 
 # Mention the installed location of Tesseract-OCR in your system
-# pytesseract.pytesseract.tesseract_cmd = 'System_path_to_tesseract.exe'
+pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
  
 # Read image from which text needs to be extracted
 img = cv2.imread("sample.jpg")
