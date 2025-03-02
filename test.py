@@ -115,6 +115,9 @@ def performAction(action, contours, name, image, uiElement,psm):
     file.close
     cv2.imwrite('out.jpg',im2)
     
+
+#Define all the tests here
+
     
 # Demonstarete main functionality (contour drawing, element clicking) 
 def sampleTest(): 
@@ -146,7 +149,7 @@ def sampleTest():
     file.close
     cv2.imwrite('out.jpg',im2)
     
-
+#https://embt.atlassian.net/browse/RS-124356
 def chekBitmapStyleDesigner():
     print("chekBitmapStyleDesigner test:")
     contours, im2, file = prepareSnapshot(ideUi["mainMenu"])
@@ -162,8 +165,11 @@ def chekBitmapStyleDesigner():
     
     
 # Mention the installed location of Tesseract-OCR in your system
-pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'    
+pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'  
+
+
+#Test to run:  
 
 time.sleep(4) 
-#sampleTest()
-chekBitmapStyleDesigner()
+sampleTest()
+#chekBitmapStyleDesigner()
