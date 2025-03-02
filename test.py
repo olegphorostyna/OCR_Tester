@@ -13,6 +13,8 @@ import time
 from PIL import ImageGrab
 import fnmatch
 from enum import Enum
+import os
+from datetime import datetime
 
 class Actions(Enum):
     Click = 1
@@ -28,6 +30,28 @@ ideUi = {
     "objectInspector": [256,256,512,512]   
 }
 
+class Context: 
+    
+    def __init__(self):
+        self.dirPath=os.path.join(os.getcwd(),datetime.now().strftime('%Y-%m-%d_%H-%M-%S'))
+        os.makedirs(self.dirPath)
+        self.actionCounter=-1
+        self.artifactsFolder=""
+    
+    def setTest(self,testName): 
+        self.actionCounter=-1        
+        self.artifactsFolder=os.path.join(self.dirPath, testName)
+        os.makedirs(self.artifactsFolder)
+    
+    def getArtifactName(self):
+        self.actionCounter+=1
+        return os.path.join(self.artifactsFolder, str(self.actionCounter))
+        
+    def recognized(self):        
+        return os.path.join(self.artifactsFolder, str(self.actionCounter)+"recognized.txt")
+        
+    def out(self):
+        return os.path.join(self.artifactsFolder, str(self.actionCounter)+"withCountours.jpg")
 
 def clickRight(x,y):
     win32api.SetCursorPos((x,y))
@@ -41,21 +65,22 @@ def clickLeft(x,y):
 
 
 def takeSnapshot(uiElement):
-    snapshot = ImageGrab.grab(bbox=(uiElement[0], uiElement[1], uiElement[2], uiElement[3]))
+    return ImageGrab.grab(bbox=(uiElement[0], uiElement[1], uiElement[2], uiElement[3]))
     # take whole screen 
     # snapshot = ImageGrab.grab()
-    save_path = "sample.jpg"
-    snapshot.save(save_path)
+    
  
 def clikElement(uiElement, x, y, w, h):
     #print ("Match found: "+str(int(0.8*(x+uiElement[0]+w/2)))+" "+str(int(0.8*(y+uiElement[1]+h/2))))
     #Scaling coefficient (e.g. 125%) scrren_x_dim/(img_res*1.25) 
     clickLeft(int(0.8*(x+uiElement[0]+w/2)),int(0.8*(y+uiElement[1]+h/2)))  
 
-def prepareSnapshot(uiElement):
-    takeSnapshot(uiElement)
+def prepareSnapshot(uiElement, context):
+    snapshot = takeSnapshot(uiElement)
+    save_path = context.getArtifactName()+"snapshot.jpg"
+    snapshot.save(save_path)
     # Read image from which text needs to be extracted
-    img = cv2.imread("sample.jpg")
+    img = cv2.imread(save_path)
  
     # Preprocessing the image starts
  
@@ -84,22 +109,30 @@ def prepareSnapshot(uiElement):
     im2 = img.copy()
     
     # A text file is created and flushed
-    file = open("recognized.txt", "w+")
+    file = open(context.recognized(), "w+")
     file.write("")
     file.close()  
     
     
     return contours, im2, file 
 
-def performAction(action, contours, name, image, uiElement,psm):
+def performAction(action, contours, name, image, uiElement,psm,context):
     # Open the file in append mode
-    file = open("recognized.txt", "a")
+    #file = open("recognized.txt", "a")
+    file = open(context.recognized(), "w+")
     im2 = image.copy()
+    # Looping through the identified contours
+    # Then rectangular part is cropped and passed on
+    # to pytesseract for extracting text from it
+    # Extracted text is then written into the text file
     for cnt in contours:
         x, y, w, h = cv2.boundingRect(cnt)
+        # Drawing a rectangle on copied image
         rect = cv2.rectangle(im2, (x, y), (x + w, y + h), (0, 255, 0), 1)
         # Cropping the text block for giving input to OCR
         cropped = image[y:y + h, x:x + w]
+        # Check what we feed into pytesseract
+        # cv2.imwrite('cropped %d.jpg' %x ,cropped)  
         # Apply OCR on the cropped image
         # page segmentation modes (psm) is set
         text = pytesseract.image_to_string(cropped,lang='eng',config=psm)  
@@ -113,53 +146,32 @@ def performAction(action, contours, name, image, uiElement,psm):
             file.write(text)            
     # Close the file
     file.close
-    cv2.imwrite('out.jpg',im2)
+    cv2.imwrite(context.out(),im2)
     
 
 #Define all the tests here
 
     
 # Demonstarete main functionality (contour drawing, element clicking) 
-def sampleTest(): 
-    contours, im2, file = prepareSnapshot(ideUi["mainMenu"])
-    file = open("recognized.txt", "w+")
-    # Looping through the identified contours
-    # Then rectangular part is cropped and passed on
-    # to pytesseract for extracting text from it
-    # Extracted text is then written into the text file
-    for cnt in contours:
-        x, y, w, h = cv2.boundingRect(cnt)       
-        # Drawing a rectangle on copied image
-        rect = cv2.rectangle(im2, (x, y), (x + w, y + h), (0, 255, 0), 1)
-        
-        # Cropping the text block for giving input to OCR
-        cropped = im2[y:y + h, x:x + w] 
-        # Check what we feed into pytesseract
-        # cv2.imwrite('cropped %d.jpg' %x ,cropped)    
-        
-        # Apply OCR on the cropped image
-        # page segmentation modes (psm) is set
-        text = pytesseract.image_to_string(cropped,lang='eng',config='--psm 8')  
-        if "File" in text :       
-            clikElement(ideUi["mainMenu"], x, y, w, h)              
-        # Appending the text into file
-        if text:
-            file.write(text)            
-    # Close the file
-    file.close
-    cv2.imwrite('out.jpg',im2)
+def sampleTest(context): 
+    context.setTest("sampleTest") 
+    contours, im2, file = prepareSnapshot(ideUi["mainMenu"],context)
+    performAction(Actions.Click, contours, "File", im2, ideUi["mainMenu"],"--psm 8",context)
+    #restore for a next test
+    performAction(Actions.Click, contours, "File", im2, ideUi["mainMenu"],"--psm 8",context)
     
 #https://embt.atlassian.net/browse/RS-124356
-def chekBitmapStyleDesigner():
+def chekBitmapStyleDesigner(context):
     print("chekBitmapStyleDesigner test:")
-    contours, im2, file = prepareSnapshot(ideUi["mainMenu"])
-    performAction(Actions.Click, contours, "Tools", im2, ideUi["mainMenu"],"--psm 8")
+    context.setTest("chekBitmapStyleDesigner")
+    contours, im2, file = prepareSnapshot(ideUi["mainMenu"],context)
+    performAction(Actions.Click, contours, "Tools", im2, ideUi["mainMenu"],"--psm 8",context)
     
-    contours, im2, file = prepareSnapshot(ideUi["mainMenuItems"])
-    performAction(Actions.Click, contours, "Bitmap", im2, ideUi["mainMenuItems"], "--psm 7")
+    contours, im2, file = prepareSnapshot(ideUi["mainMenuItems"],context)
+    performAction(Actions.Click, contours, "Bitmap", im2, ideUi["mainMenuItems"], "--psm 7",context)
     
-    contours, im2, file = prepareSnapshot(ideUi["centrRegion"])
-    performAction(Actions.FailIfExist, contours, "Access", im2, ideUi["centrRegion"], "--psm 11")
+    contours, im2, file = prepareSnapshot(ideUi["centrRegion"],context)
+    performAction(Actions.FailIfExist, contours, "Access", im2, ideUi["centrRegion"], "--psm 11",context)
     
     
     
@@ -167,9 +179,8 @@ def chekBitmapStyleDesigner():
 # Mention the installed location of Tesseract-OCR in your system
 pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'  
 
-
-#Test to run:  
-
+context = Context()   
+#Test to run:
 time.sleep(4) 
-sampleTest()
-#chekBitmapStyleDesigner()
+sampleTest(context)
+chekBitmapStyleDesigner(context)
