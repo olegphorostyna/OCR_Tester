@@ -30,6 +30,12 @@ ideUi = {
     "objectInspector": [256,256,512,512]   
 }
 
+
+def rescale(scaleFactor):
+    for key in ideUi:
+        if isinstance(ideUi[key], list):  # Check if the value is a list
+            ideUi[key] = [item * scaleFactor for item in ideUi[key]]
+
 class Context: 
     
     def __init__(self):
@@ -37,6 +43,9 @@ class Context:
         os.makedirs(self.dirPath)
         self.actionCounter=-1
         self.artifactsFolder=""
+        # Originaly ui elements was created for HD monitor with scale=125%
+        # With 4K monitor with scale set to 200% we need muliply each dimension by 200/125=1.6 
+        rescale(1.6)
     
     def setTest(self,testName): 
         self.actionCounter=-1        
@@ -65,15 +74,20 @@ def clickLeft(x,y):
 
 
 def takeSnapshot(uiElement):
-    return ImageGrab.grab(bbox=(uiElement[0], uiElement[1], uiElement[2], uiElement[3]))
+    #return ImageGrab.grab(bbox=(0.8*uiElement[0], 0.8*uiElement[1], 0.8*uiElement[2], 0.8*uiElement[3])) #4k no scaling
+    #return ImageGrab.grab(bbox=(1.6*uiElement[0], 1.6*uiElement[1], 1.6*uiElement[2], 1.6*uiElement[3])) #4k 200 scaling
+    return ImageGrab.grab(bbox=(uiElement[0], uiElement[1], uiElement[2], uiElement[3])) #4k 200 scaling with modified ideUi dictionary
     # take whole screen 
     # snapshot = ImageGrab.grab()
     
  
 def clikElement(uiElement, x, y, w, h):
     #print ("Match found: "+str(int(0.8*(x+uiElement[0]+w/2)))+" "+str(int(0.8*(y+uiElement[1]+h/2))))
-    #Scaling coefficient (e.g. 125%) scrren_x_dim/(img_res*1.25) 
-    clickLeft(int(0.8*(x+uiElement[0]+w/2)),int(0.8*(y+uiElement[1]+h/2)))  
+    #Scaling coefficient (e.g. 125%) scrren_x_dim/(img_res*1.25)=1/1.25
+    #Regular display Display resolution 1920*966 scale 125
+    #4k(3849*2160) Display resolution 3840*1948 scale 200
+    #clickLeft(int(0.8*(x+uiElement[0]+w/2)),int(0.8*(y+uiElement[1]+h/2)))  
+    clickLeft(int(0.5*(x+uiElement[0]+w/2)),int(0.5*(y+uiElement[1]+h/2))) #4k click scale 
 
 def prepareSnapshot(uiElement, context):
     snapshot = takeSnapshot(uiElement)
@@ -139,7 +153,8 @@ def performAction(action, contours, name, image, uiElement,psm,context):
         if name in text : 
             match action:
                 case Actions.Click:
-                    clikElement(uiElement, x, y, w, h)
+                    clikElement(uiElement, x, y, w, h)                 
+                    cv2.circle(im2, (x+int(w/2),y+int(h/2)), radius=7, color=(0, 0, 255), thickness=-1)
                 case Actions.FailIfExist:                          
                     print("Failed!")                   
         if text:
@@ -156,9 +171,9 @@ def performAction(action, contours, name, image, uiElement,psm,context):
 def sampleTest(context): 
     context.setTest("sampleTest") 
     contours, im2, file = prepareSnapshot(ideUi["mainMenu"],context)
-    performAction(Actions.Click, contours, "File", im2, ideUi["mainMenu"],"--psm 8",context)
+    performAction(Actions.Click, contours, "Help", im2, ideUi["mainMenu"],"--psm 8",context)
     #restore for a next test
-    performAction(Actions.Click, contours, "File", im2, ideUi["mainMenu"],"--psm 8",context)
+    performAction(Actions.Click, contours, "Help", im2, ideUi["mainMenu"],"--psm 8",context)
     
 #https://embt.atlassian.net/browse/RS-124356
 def chekBitmapStyleDesigner(context):
@@ -183,4 +198,4 @@ context = Context()
 #Test to run:
 time.sleep(4) 
 sampleTest(context)
-chekBitmapStyleDesigner(context)
+#chekBitmapStyleDesigner(context)
